@@ -1229,6 +1229,8 @@ void ParameterManager::_checkInitialLoadComplete(void)
 
 void ParameterManager::_initialRequestTimeout(void)
 {
+    qCCritical(ParameterManagerLog) << "Custom log. _initialRequestRetryCount: " << _initialRequestRetryCount << "  _maxInitialRequestListRetry" << _maxInitialRequestListRetry;
+    
     if (!_disableAllRetries && ++_initialRequestRetryCount <= _maxInitialRequestListRetry) {
         qCDebug(ParameterManagerLog) << _logVehiclePrefix(-1) << "Retrying initial parameter request list";
         refreshAllParameters();
